@@ -1,5 +1,6 @@
 package dev.be.moduleapi.controller;
 
+import dev.be.moduleapi.exception.CustomException;
 import dev.be.moduleapi.service.DemoService;
 import dev.be.modulecommon.enums.CodeEnum;
 import lombok.RequiredArgsConstructor;
@@ -21,4 +22,11 @@ public class DemoController {
     public String find() {
         return demoService.find();
     }
+
+    @GetMapping("/exception")
+    public String exception() {
+        if (true) throw new CustomException(CodeEnum.UNKNOWN_ERROR);
+        return demoService.exception();
+    }
+
 }
